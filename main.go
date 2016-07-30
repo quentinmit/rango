@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
+	"net/http/fcgi"
 	"os"
 
 	"github.com/spf13/viper"
@@ -47,7 +46,7 @@ func main() {
 		AdminDir: viper.GetString("AdminDir"),
 	})
 
-	// start http server
-	fmt.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	if err := fcgi.Serve(nil, router); err != nil {
+		log.Fatal(err)
+	}
 }
