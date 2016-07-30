@@ -20,7 +20,7 @@ var Editor = React.createClass({
     return (
       <div className='route editor'>
         <EditorMetadata metadata={this.props.editor.getIn(['page', 'metadata'])} />
-        {/* <EditorContent content={this.props.editor.getIn(['page', 'content'])} */}
+        <EditorContent content={this.props.editor.getIn(['page', 'content'])} />
         <EditorImages metadata={this.props.editor.getIn(['page', 'metadata'])} />
       </div>
     );
