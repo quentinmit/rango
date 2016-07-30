@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/spf13/viper"
-	"github.com/stayradiated/rango/rangolib"
+	"github.com/quentinmit/rango/rangolib"
 )
 
 func main() {

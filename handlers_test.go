@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/stayradiated/rango/rangolib"
+	"github.com/quentinmit/rango/rangolib"
 	"github.com/stretchr/testify/suite"
 )
 

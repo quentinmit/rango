@@ -13,7 +13,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/kennygrant/sanitize"
-	"github.com/stayradiated/rango/rangolib"
+	"github.com/quentinmit/rango/rangolib"
 )
 
 type Handlers struct {
