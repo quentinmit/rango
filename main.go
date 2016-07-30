@@ -13,6 +13,7 @@ func main() {
 
 	// setup config file
 	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
 	viper.ReadInConfig()
 
 	// set config defaults
