@@ -28,11 +28,15 @@ func (d Dir) Read(dirname string) (Files, error) {
 	}
 
 	// make a new slice of File's to hold the dir contents
-	files := make(Files, len(contents))
+	var files Files
 
 	// convert os.FileInfo into Files
-	for i, info := range contents {
-		files[i] = NewFile(filepath.Join(dirname, info.Name()), info)
+	for _, info := range contents {
+		name := info.Name()
+		if name[len(name)-1] == '~' {
+			continue
+		}
+		files = append(files, NewFile(filepath.Join(dirname, info.Name()), info))
 	}
 
 	return files, nil
