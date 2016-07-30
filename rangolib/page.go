@@ -139,10 +139,6 @@ func (p Page) Update(fp string, fm Frontmatter, content []byte) (*PageFile, erro
 		return nil, err
 	}
 
-	// the filepath for the page
-	dirname := filepath.Dir(fp)
-	fp = generateFilePath(dirname, title)
-
 	// create a new page
 	page := &PageFile{
 		Path:     fp,
