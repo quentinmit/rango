@@ -2,8 +2,12 @@ package rangolib
 
 import "os/exec"
 
-func RunHugo() ([]byte, error) {
-	hugo := exec.Command("hugo")
+func RunHugo(path, cwd string) ([]byte, error) {
+	if path == "" {
+		path = "hugo"
+	}
+	hugo := exec.Command(path)
+	hugo.Dir = cwd
 
 	output, err := hugo.Output()
 	if err != nil {

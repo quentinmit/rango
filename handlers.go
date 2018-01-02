@@ -23,6 +23,7 @@ type Handlers struct {
 
 	ContentDir string
 	AssetsDir  string
+	HugoPath, HugoCwd string
 }
 
 //  ┌┬┐┬┬─┐┌─┐┌─┐┌┬┐┌─┐┬─┐┬┌─┐┌─┐
@@ -406,7 +407,7 @@ func (h Handlers) CreateAsset(w http.ResponseWriter, r *http.Request) {
 //  ┴ ┴└─┘└─┘└─┘
 
 func (h Handlers) PublishSite(w http.ResponseWriter, r *http.Request) {
-	output, err := rangolib.RunHugo()
+	output, err := rangolib.RunHugo(h.HugoPath, h.HugoCwd)
 	if err != nil {
 		wrapError(err).Write(w)
 	}

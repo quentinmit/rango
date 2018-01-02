@@ -20,6 +20,8 @@ func main() {
 	viper.SetDefault("ContentDir", "content")
 	viper.SetDefault("AdminDir", "admin")
 	viper.SetDefault("AssetsDir", "static/assets")
+	viper.SetDefault("HugoPath", "hugo")
+	viper.SetDefault("HugoCwd", "")
 
 	// make sure content dir exists
 	contentDir := viper.GetString("ContentDir")
@@ -43,6 +45,8 @@ func main() {
 			Page:       rangolib.NewPage(),
 			ContentDir: contentDir,
 			AssetsDir:  assetsDir,
+			HugoPath: viper.GetString("HugoPath"),
+			HugoCwd: viper.GetString("HugoCwd"),
 		},
 		AdminDir: viper.GetString("AdminDir"),
 	})
