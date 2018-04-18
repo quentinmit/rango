@@ -128,16 +128,25 @@ func (p Page) Create(dirname string, fm Frontmatter, content []byte) (*PageFile,
 func (p Page) Update(fp string, fm Frontmatter, content []byte) (*PageFile, error) {
 
 	// get title from metadata
-	title, err := getTitle(fm)
+	// Commented out by mitchb 4/17/2018 - no need to fetch title; see comment below
+	//title, err := getTitle(fm)
+	//if err != nil {
+		//return nil, err
+	//}
+
+	// delete existing page
+	err := p.Destroy(fp)
 	if err != nil {
 		return nil, err
 	}
 
-	// delete existing page
-	err = p.Destroy(fp)
-	if err != nil {
-		return nil, err
-	}
+	// the filepath for the page
+	// Commented out by mitchb 4/17/2018 - do not change file path if the
+	// page title has changed because we track our markdown files in git
+	// and don't want the historical file disappearing and breaking existing
+	// links.
+	//dirname := filepath.Dir(fp)
+	//fp = generateFilePath(dirname, title)
 
 	// create a new page
 	page := &PageFile{
